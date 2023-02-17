@@ -1,6 +1,14 @@
 .hero {
 	height: 500px;
 	border-radius: 10px;
+	background-size: cover;
+	background-position: center;
+}
+
+@media (max-width: 767px) {
+	.hero {
+		height: 300px;
+	}
 }
 
 .ribbon {

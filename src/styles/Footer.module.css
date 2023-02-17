@@ -20,3 +20,18 @@
 .logoText {
 	font-size: 10px;
 }
+
+@media (max-width: 767px) {
+	.footer {
+		flex-direction: column;
+	}
+
+	.footer h5 {
+		margin: 20px 0;
+		text-align: center;
+	}
+
+	.footer p {
+		text-align: center;
+	}
+}
