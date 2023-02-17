@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 const MainLayout = ({children}) => {
 	return (
@@ -13,7 +14,12 @@ const MainLayout = ({children}) => {
 
       <div className="container-fluid">
 	      <Navbar />
+
 	      {children}
+
+	      <div className="row">
+          <Footer />
+        </div>
       </div>
 		</>
 	)
