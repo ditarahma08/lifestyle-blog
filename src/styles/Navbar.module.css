@@ -21,6 +21,12 @@
 	float: right;
 }
 
+@media (max-width: 767px) {
+	.menu {
+		visibility: hidden;
+	}
+}
+
 .menuGroup {
 	border-bottom: 2px solid var(--dark);
 	font-weight: bold;
@@ -35,4 +41,41 @@
 
 .menuGroup a:hover {
 	color: var(--orange);
+}
+
+.hamburger {
+	cursor: pointer;
+}
+
+.iconBar {
+	background-color: var(--orange);
+  height: 4px;
+  width: 35px;
+  display: block;
+  margin-top: 5px;
+  transition: all .5s cubic-bezier(.5, 0, .5, 1);
+}
+
+.iconBar.top {
+	transform: translate3d(0, -1px, 0);
+}
+
+.iconBar.mid {
+	transform: translateZ(0);
+}
+
+.iconBar.bot {
+	transform-origin: center center;
+}
+
+.hamburger.open .iconBar.top {
+	transform: translate3d(0, 9px ,0) rotate(45deg);
+}
+
+.hamburger.open .iconBar.mid {
+	transform: translateZ(0) rotate(-45deg);
+}
+
+.hamburger.open .iconBar.bot {
+	transform: scaleX(0);
 }
