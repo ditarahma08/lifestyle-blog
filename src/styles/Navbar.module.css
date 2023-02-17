@@ -1,0 +1,28 @@
+.navbar {
+	color: var(--dark);
+}
+
+.logo {
+	background-color: var(--orange);
+	font-weight: bold;
+}
+
+.menu {
+	float: right;
+}
+
+.menuGroup {
+	border-bottom: 2px solid var(--dark);
+	font-weight: bold;
+	width: 200px;
+	justify-content: space-around;
+	padding-bottom: 10px;
+}
+
+.menuGroup a {
+	color: var(--dark);
+}
+
+.menuGroup a:hover {
+	color: var(--orange);
+}

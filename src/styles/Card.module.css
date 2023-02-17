@@ -1,0 +1,21 @@
+.card {
+	color: var(--dark);
+}
+
+.card img {
+	width: 400px;
+	border-radius: 10px;
+}
+
+.card h4 {
+	max-width: 350px;
+	text-align: center;
+}
+
+.author {
+	border: 2px solid var(--dark);
+	border-radius: 100px;
+	width: auto;
+	font-size: 12px;
+}
+
