@@ -34,18 +34,17 @@ const Navbar = () => {
 				<span className={`${styles.iconBar} ${styles.bot}`}></span>
 			</div>
 
-			{openHamburger && (
-				<div>
-					<ul>
-						<li>All Articles</li>
-						<li>Food & Drink</li>
-						<li>Fashion & Beauty</li>
-						<li>Travel</li>
-						<li>Film</li>
-						<li>Business & Work</li>
-					</ul>
-				</div>
-			)}
+
+			<div className={`d-flex justify-content-center align-items-center ${styles.sheet} ${openHamburger ? styles.open : ''}`}>
+				<ul>
+					<li>All Articles</li>
+					<li>Food & Drink</li>
+					<li>Fashion & Beauty</li>
+					<li>Travel</li>
+					<li>Film</li>
+					<li>Business & Work</li>
+				</ul>
+			</div>
 		</div>
 	)
 }

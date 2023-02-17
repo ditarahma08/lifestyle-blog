@@ -3,18 +3,26 @@
 }
 
 .logo {
+	position: absolute;
+	top: 0;
+	left: 0;
 	background-color: var(--orange);
 	font-weight: bold;
-  border-bottom-left-radius: 15px;
-  transform: rotate(-90deg);
-  position: absolute;
-  left: -55px;
-  top: 34px;
   padding: 15px;
   padding-right: 35px;
   padding-top: 35px;
   font-size: 14px;
   text-decoration: line-through;
+}
+
+@media (min-width: 768px) {
+	.logo {
+		left: -55px;
+	  top: 34px;
+		border-bottom-left-radius: 15px;
+	  transform: rotate(-90deg);
+  	padding-top: 35px;
+	}
 }
 
 .menu {
@@ -35,16 +43,18 @@
 	padding-bottom: 10px;
 }
 
-.menuGroup a {
+.menuGroup a, .sheet ul li {
 	color: var(--dark);
+	font-weight: bold;
 }
 
-.menuGroup a:hover {
+.menuGroup a:hover, .sheet ul li:hover {
 	color: var(--orange);
 }
 
 .hamburger {
 	cursor: pointer;
+	z-index: 3;
 }
 
 .iconBar {
@@ -78,4 +88,36 @@
 
 .hamburger.open .iconBar.bot {
 	transform: scaleX(0);
+}
+
+.sheet {
+	background-color: var(--white);
+	position: absolute;
+	top: 0;
+	height: 100vh;
+	width: 100%;
+	z-index: 2;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0.5s, opacity 0.5s linear;
+}
+
+.sheet ul {
+	text-align: center;
+	list-style-type: none;
+}
+
+.sheet ul li {
+	margin: 15px 0;
+}
+
+.sheet.open {
+	visibility: visible;
+	opacity: 1;
+}
+
+@media (min-width: 768px) {
+	.hamburger, .sheet {
+		display: none;
+	}
 }
