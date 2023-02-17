@@ -2,10 +2,10 @@ import styles from '@/styles/Navbar.module.css'
 
 const Navbar = () => {
 	return (
-		<div className={`d-flex justify-content-between ${styles.navbar}`}>
-			<div className={styles.logo}>
-				<p>LOGOOOOOO</p>
-				<p>WEB DEVELOPER</p>
+		<div className={`d-flex justify-content-end pt-5 ${styles.navbar}`}>
+			<div className={`d-flex flex-column ${styles.logo}`}>
+				<span>LOGOOOOOO</span>
+				<span>WEB DEVELOPER</span>
 			</div>
 
 			<div className={`d-flex ${styles.menu}`}>
