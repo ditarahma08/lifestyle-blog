@@ -2,9 +2,17 @@
 	color: var(--dark);
 }
 
+.card.footer {
+	color: var(--white);
+}
+
 .card img {
-	width: 400px;
+	width: 450px;
 	border-radius: 10px;
+}
+
+.card.footer img {
+	width: 350px;
 }
 
 .card h4 {
@@ -17,5 +25,9 @@
 	border-radius: 100px;
 	width: auto;
 	font-size: 12px;
+}
+
+.card.footer .author {
+	border: 2px solid var(--white);
 }
 

@@ -1,0 +1,8 @@
+.insight {
+	background-color: var(--black);
+	color: var(--white);
+}
+
+.insight p {
+	color: var(--grey);
+}

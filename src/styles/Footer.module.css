@@ -1,0 +1,22 @@
+.footer {
+	background-color: var(--dark-grey);
+	color: var(--white);
+}
+
+.footer h5 {
+	color: var(--orange);
+	font-size: 14px;
+}
+
+.footer p {
+	font-size: 12px;
+}
+
+.footer p a {
+	color: var(--white);
+	text-decoration: underline !important;
+}
+
+.logoText {
+	font-size: 10px;
+}
