@@ -4,22 +4,28 @@ import Card from '../../../components/Card'
 import Insight from '../../../components/Insight'
 import Footer from '../../../components/Footer'
 import { months } from '../../../utils/constant'
+import { articles } from '../../../utils/response'
+import { useState, useEffect } from 'react'
 
-const Article = () => {
-	const article = {
-      "id": 1,
-      "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836",
-      "author": "Daniel Wilson",
-      "is_featured": false,
-      "categories": {
-        "id": 1,
-        "title": "Food"
-      },
-      "title": "10 Simple and Delicious Ways to Cook with Quinoa",
-      "summary": "Quinoa is an incredibly versatile and nutritious ingredient that should be in any home cook's pantry. It's great for adding texture and nutrition to any meal and it's also gluten-free. I highly recommend experimenting with it in different recipes.",
-      "content": "Quinoa is a versatile and nutritious grain that can be used in a variety of dishes. Here are 10 simple and delicious ways to cook with quinoa:\n\nAs a side dish: Cook quinoa according to package instructions and season with salt, pepper, and your choice of herbs and spices. Serve as a side dish with your favorite protein.\n\nIn salads: Cook quinoa and let it cool. Then, mix it with your favorite vegetables and a vinaigrette dressing for a healthy and flavorful salad.\n\nIn soups: Add cooked quinoa to your favorite soups for a boost of protein and texture.\n\nIn breakfast bowls: Cook quinoa and mix it with your favorite fruits, nuts, and a drizzle of honey for a delicious and nutritious breakfast bowl.\n\nIn buddha bowls: Cook quinoa and mix it with roasted vegetables, a protein source such as tofu or tempeh, and a flavorful dressing for a satisfying buddha bowl.\n\nIn burgers: Mix cooked quinoa with mashed beans, herbs, and spices to make quinoa burgers.\n\nAs a stuffing: Mix cooked quinoa with chopped vegetables and herbs, and use it as a stuffing for bell peppers or tomatoes.\n\nIn meatloaf: Mix cooked quinoa with ground meat, eggs, and seasonings to make quinoa meatloaf.\n\nIn meatballs: Mix cooked quinoa with ground meat, eggs, and seasonings to make quinoa meatballs.\n\nIn desserts: Quinoa can also be used in sweet dishes such as cakes, pies, and puddings. Mix cooked quinoa with your favorite fruits, nuts, and sweeteners for a unique and healthy dessert.\n\nQuinoa is a delicious and nutritious grain that can be used in a variety of dishes. These 10 ways to cook with quinoa are just a few examples of how versatile this grain can be. Experiment with different seasonings, vegetables, and protein sources to create your own unique quinoa dishes.",
-      "created_at": "2016-04-07T08:45:06.469Z"
-  }
+const Article = (props) => {
+	const { id } = props
+	const [article, setArticle] = useState({})
+
+ 	const assignArticle = (data) => {
+ 		let selectedArticle = {}
+
+ 		data.map((article) => {
+ 			if (article.id == id) {
+ 				selectedArticle = article
+ 			}
+ 		})
+
+ 		setArticle(selectedArticle)
+ 	}
+
+	useEffect(() => {
+		assignArticle(articles.data)
+	}, [articles])
 
   const getFormattedDate = (createdAt) => {
   	const date = new Date(createdAt)
@@ -54,3 +60,8 @@ const Article = () => {
 }
 
 export default Article
+
+export async function getServerSideProps({ query }) {
+	 const { id } = query;
+	 return { props: { id } }
+}
