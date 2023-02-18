@@ -4,11 +4,18 @@ import MainLayout from '../layouts/MainLayout'
 import { articles } from '../utils/response'
 import Card from '../components/Card'
 import Insight from '../components/Insight'
+import  { useState, useEffect } from 'react'
 
 export default function Home() {
+  const [activeCategories, setActiveCategories] = useState(0)
+
+  useEffect(() => {
+    // console.log(activeCategories)
+  }, [activeCategories])
+
   return (
     <>
-      <MainLayout>
+      <MainLayout activeFilter={activeCategories} onChangeCategories={(value) => setActiveCategories(value)}>
         <div className={`container ${styles.main}`}>
           <div className="row">
             {articles.data.map((article) =>

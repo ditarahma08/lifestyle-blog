@@ -2,7 +2,8 @@ import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
-const MainLayout = ({children}) => {
+const MainLayout = ({children, activeFilter, onChangeCategories}) => {
+
 	return (
 		<>
 			<Head>
@@ -13,7 +14,7 @@ const MainLayout = ({children}) => {
       </Head>
 
       <div className="container-fluid">
-	      <Navbar />
+	      <Navbar onChange={onChangeCategories} active={activeFilter} />
 
 	      {children}
 

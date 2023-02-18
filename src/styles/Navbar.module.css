@@ -48,7 +48,10 @@
 	font-weight: bold;
 }
 
-.menuGroup a:hover, .sheet ul li:hover {
+.menuGroup a.active,
+.menuGroup a:hover,
+.sheet ul li:hover,
+.sheet ul li.active {
 	color: var(--orange);
 }
 

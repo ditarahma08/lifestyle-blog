@@ -324,3 +324,28 @@ export const articles = {
     }
   ]
 }
+
+export const categories = {
+  "data": [
+    {
+      "id": 1,
+      "title": "Food"
+    },
+    {
+      "id": 2,
+      "title": "Travel"
+    },
+    {
+      "id": 3,
+      "title": "Fashion And Beauty"
+    },
+    {
+      "id": 4,
+      "title": "Film"
+    },
+    {
+      "id": 5,
+      "title": "Business And Work"
+    }
+  ]
+}
