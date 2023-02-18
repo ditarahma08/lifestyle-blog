@@ -30,3 +30,7 @@ a {
   margin-left: 0 !important;
   padding: 0 !important;
 }
+
+.loaded {
+  opacity: 1 !important;
+}

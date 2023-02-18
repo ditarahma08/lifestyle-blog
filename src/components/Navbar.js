@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { categories } from '../utils/response'
 import styles from '@/styles/Navbar.module.css'
 
 const Navbar = (props) => {
+	const router = useRouter()
+
 	const { onChange, active } = props;
 	const [openHamburger, setOpenHamburger] = useState(false)
 	const [dataCategories, setDataCategories] = useState([])
@@ -30,7 +33,7 @@ const Navbar = (props) => {
 
 	return (
 		<div className={`d-flex justify-content-end pt-5 ${styles.navbar}`}>
-			<div className={`d-flex flex-column ${styles.logo}`}>
+			<div className={`d-flex flex-column ${styles.logo}`} onClick={() => router.push('/')}>
 				<span>LOGOOOOOO</span>
 				<span>WEB DEVELOPER</span>
 			</div>
