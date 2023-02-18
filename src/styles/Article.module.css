@@ -29,6 +29,10 @@
 	border-bottom: 1px solid var(--dark);
 }
 
+.header h4, .content {
+	font-family: 'Labrada', serif;
+}
+
 .content {
 	font-size: 20px;
 	white-space: pre-line;
