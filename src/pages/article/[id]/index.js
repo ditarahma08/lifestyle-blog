@@ -6,9 +6,12 @@ import Footer from '../../../components/Footer'
 import { months } from '../../../utils/constant'
 import { articles } from '../../../utils/response'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 const Article = (props) => {
 	const { id } = props
+	const router = useRouter()
+
 	const [article, setArticle] = useState({})
 
  	const assignArticle = (data) => {
@@ -33,28 +36,30 @@ const Article = (props) => {
   }
 
 	return (
-		<MainLayout>
+		<MainLayout activeFilter={article?.categories?.id} onChangeCategories={(value) => router.push(`/?filter=${value}`)}>
+		{article.author && (
 			<div className={`container my-5`}>
-				<div className={`d-flex align-items-end ${styles.hero}`} style={{ backgroundImage: `url(${article?.image})` }}>
-					<div className={`px-4 py-1 ${styles.ribbon}`}>
-						<span>PUBLISHED {getFormattedDate(article?.created_at).toUpperCase()}</span>
-						<span>BY <span className={styles.author}>{article?.author.toUpperCase()}</span></span>
+					<div className={`d-flex align-items-end ${styles.hero}`} style={{ backgroundImage: `url(${article?.image})` }}>
+						<div className={`px-4 py-1 ${styles.ribbon}`}>
+							<span>PUBLISHED {getFormattedDate(article?.created_at).toUpperCase()}</span>
+							<span>BY <span className={styles.author}>{article?.author.toUpperCase()}</span></span>
+						</div>
 					</div>
-				</div>
 
-				<div className={`my-5 pb-4 d-flex justify-content-center ${styles.header}`}>
-					<div className={styles.wrapper}>
-						<h1 className="mb-4">{article?.title}</h1>
-						<h4 className="mb-3">{article?.summary}</h4>
+					<div className={`my-5 pb-4 d-flex justify-content-center ${styles.header}`}>
+						<div className={styles.wrapper}>
+							<h1 className="mb-4">{article?.title}</h1>
+							<h4 className="mb-3">{article?.summary}</h4>
+						</div>
 					</div>
-				</div>
 
-				<div className="d-flex justify-content-center">
-					<div className={`${styles.content} ${styles.wrapper}`}>
-						<p>{article?.content}</p>
+					<div className="d-flex justify-content-center">
+						<div className={`${styles.content} ${styles.wrapper}`}>
+							<p>{article?.content}</p>
+						</div>
 					</div>
-				</div>
 			</div>
+		)}
 		</MainLayout>
 	)
 }

@@ -5,8 +5,11 @@ import { articles } from '../utils/response'
 import Card from '../components/Card'
 import Insight from '../components/Insight'
 import  { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 export default function Home() {
+  const router = useRouter()
+
   const [activeCategories, setActiveCategories] = useState(0)
   const [shownArticles, setShownArticles] = useState([])
   const [validArticles, setValidArticles] = useState([])
@@ -23,6 +26,7 @@ export default function Home() {
   }
 
   const assignShownArticles = () => {
+    console.log(activeCategories)
     let activeArticles = []
     let filteredArticles = []
 
@@ -56,6 +60,12 @@ export default function Home() {
   }
 
   useEffect(() => {
+    if (router?.query?.filter) {
+      setActiveCategories(parseInt(router?.query?.filter))
+    }
+  }, [router?.query?.filter])
+
+  useEffect(() => {
     assignShownArticles()
   }, [activeCategories])
 
@@ -65,7 +75,14 @@ export default function Home() {
 
   return (
     <>
-      <MainLayout activeFilter={activeCategories} onChangeCategories={(value) => setActiveCategories(value)}>
+      <MainLayout activeFilter={activeCategories} onChangeCategories={(value) => {setActiveCategories(value)
+        router.replace({
+          pathname: router.pathname,
+          query: { filter: value }
+        },
+        undefined,
+        { shallow: true })
+      }}>
         <div className={`container ${styles.main}`}>
           <div className="row">
             {shownArticles.map((article, index) => (
