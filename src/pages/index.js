@@ -9,6 +9,12 @@ import  { useState, useEffect } from 'react'
 export default function Home() {
   const [activeCategories, setActiveCategories] = useState(0)
 
+  const sortedArticles = () => {
+    return articles.data.sort((a, b) => {
+      return new Date(b.created_at) - new Date(a.created_at)
+    })
+  }
+
   useEffect(() => {
     // console.log(activeCategories)
   }, [activeCategories])
@@ -17,13 +23,24 @@ export default function Home() {
     <>
       <MainLayout activeFilter={activeCategories} onChangeCategories={(value) => setActiveCategories(value)}>
         <div className={`container ${styles.main}`}>
-          <div className="row">
-            {articles.data.map((article) =>
-              article.is_featured === true && (
-                <Card data={article} />
-              )
-            )}
-          </div>
+
+          {activeCategories === 0 ? (
+            <div className="row">
+              {sortedArticles().map((article, index) =>
+                article.is_featured === false && index < 10 && (
+                  <Card data={article} />
+                )
+              )}
+            </div>
+          ) : (
+            <div className="row">
+              {sortedArticles().map((article, index) =>
+                article.is_featured === false && index < 10 && article.categories.id === activeCategories && (
+                  <Card data={article} />
+                )
+              )}
+            </div>
+          )}
 
           <div className="d-flex justify-content-center my-4">
             <button className={`px-5 py-3 ${styles.buttonMore}`}>MORE ARTICLES</button>
